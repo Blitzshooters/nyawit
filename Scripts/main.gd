@@ -42,7 +42,7 @@ func change_scene(scene: PackedScene):
 		current_scene.queue_free()
 
 	# Cek apakah scene yang dimuat adalah gameplay
-	var is_gameplay = "gameplay.tscn" in scene.resource_path.lower()
+	var is_gameplay = "gameplay.tscn" in scene.resource_path.to_lower()
 	
 	# Atur pemutaran BGM global (hanya hidup di non-gameplay)
 	if is_gameplay:
