@@ -103,7 +103,11 @@ func _setup_audio() -> void:
 	# BGM
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.stream = BGM_STREAM
-	bgm_player.volume_db = linear_to_db(music_volume / 100.0)
+	# Diberikan boost +10.0 dB agar lagu gameplay terdengar lebih keras
+	if music_volume > 0.0:
+		bgm_player.volume_db = linear_to_db(music_volume / 100.0) + 10.0
+	else:
+		bgm_player.volume_db = -80.0
 	bgm_player.autoplay = true
 	add_child(bgm_player)
 	bgm_player.finished.connect(func(): bgm_player.play())
