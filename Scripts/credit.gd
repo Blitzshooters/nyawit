@@ -9,10 +9,10 @@ func _ready() -> void:
 
 func _on_main_menu_pressed() -> void:
 	get_node("/root/Main").change_scene(
-		preload("res://Scenes/main_menu.tscn")
+		load("res://Scenes/main_menu.tscn")
 	)
 
 func _on_play_pressed() -> void:
 	get_node("/root/Main").change_scene(
-		preload("res://Scenes/gameplay.tscn")
+		load("res://Scenes/gameplay.tscn")
 	)

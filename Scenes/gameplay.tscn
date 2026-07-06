@@ -1,10 +1,31 @@
 [gd_scene format=3 uid="uid://btjo7qss46f78"]
 
 [ext_resource type="Script" uid="uid://buoeycebouu52" path="res://Scripts/gameplay.gd" id="1_wbxth"]
+[ext_resource type="FontFile" uid="uid://dsyubgcuupvn2" path="res://Font/Tiny5-Regular.ttf" id="2_wbxth"]
 
 [node name="Gameplay" type="Node2D" unique_id=1522893207]
 script = ExtResource("1_wbxth")
 
-[node name="Label" type="Label" parent="." unique_id=35576851]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1391303074]
+
+[node name="PointLabel" type="Label" parent="CanvasLayer" unique_id=1151410765]
+offset_left = 17.0
+offset_top = 6.0
+offset_right = 225.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("2_wbxth")
+theme_override_font_sizes/font_size = 64
+text = "Point: 0"
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=5742155]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -232.0
+offset_top = 6.0
+offset_right = -16.0
+offset_bottom = 78.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_wbxth")
+theme_override_font_sizes/font_size = 64
+text = "Timer: 0"

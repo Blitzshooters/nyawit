@@ -7,17 +7,17 @@ func _ready() -> void:
 
 func _on_play_pressed():
 	get_node("/root/Main").change_scene(
-		preload("res://Scenes/gameplay.tscn")
+		load("res://Scenes/gameplay.tscn")
 	)
 
 func _on_settings_pressed():
 	get_node("/root/Main").change_scene(
-		preload("res://Scenes/settings.tscn")
+		load("res://Scenes/settings.tscn")
 	)
 
 func _on_credits_pressed():
 	get_node("/root/Main").change_scene(
-		preload("res://Scenes/credit.tscn")
+		load("res://Scenes/credit.tscn")
 	)
 
 func _on_quit_pressed():
