@@ -34,6 +34,9 @@ func _ready() -> void:
 func _on_music_changed(value: float) -> void:
 	music_value.text = str(int(value))
 	GameSettings.music_volume = value
+	var main = get_node_or_null("/root/Main")
+	if main and main.bgm_player:
+		main.bgm_player.volume_db = linear_to_db(value / 100.0)
 
 func _on_sfx_changed(value: float) -> void:
 	sfx_value.text = str(int(value))

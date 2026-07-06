@@ -3,7 +3,6 @@ extends Node2D
 # ── Referensi scene spawn ─────────────────────────────────────────────────────
 const TREE_SCENE  := preload("res://Sprite/tree.tscn")
 const SAWIT_SCENE := preload("res://Sprite/sawit.tscn")
-const CURSOR_SCENE := preload("res://Sprite/axe_cursor.tscn")
 
 # ── Referensi audio ───────────────────────────────────────────────────────────
 const SFX_HIT    := preload("res://Audio/hittree.mp3")
@@ -32,10 +31,11 @@ var time_left: float = 60.0
 var game_active: bool = false
 var paused: bool = false
 
+# Container untuk menampung pohon yang sedang aktif (agar bisa di-pause secara independen)
+var tree_container: Node2D
+
 # Spawn interval: diambil dari speed setting (0-100) lalu dimap ke detik
-# speed=0  → interval 3.0 detik (lambat)
-# speed=100 → interval 0.3 detik (cepat)
-var spawn_interval: float = 1.5   # nilai awal, akan di-override dari settings
+var spawn_interval: float = 1.5
 var spawn_timer: float = 0.0
 
 # Percepatan spawn: setiap detik interval dikurangi sedikit, minimal 0.2 detik
@@ -47,8 +47,7 @@ var bgm_player: AudioStreamPlayer
 var sfx_player: AudioStreamPlayer
 var end_player: AudioStreamPlayer
 
-# ── Pengaturan dari Settings (disimpan di global atau langsung baca) ──────────
-# Kita gunakan autoload sederhana via ProjectSettings; jika belum ada, fallback default
+# ── Pengaturan dari Settings ──────────────────────────────────────────────────
 var music_volume: float = 50.0
 var sfx_volume: float   = 50.0
 var speed_setting: float = 50.0   # 0-100
@@ -62,14 +61,23 @@ const MARGIN     := 60.0
 # ─────────────────────────────────────────────────────────────────────────────
 
 func _ready() -> void:
-	# Baca pengaturan dari GameSettings autoload
+	# Pastikan script ini tetap aktif saat pause untuk memproses input tombol Esc
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	# Muat pengaturan volume dan kecepatan dari GameSettings autoload
 	music_volume  = GameSettings.music_volume
 	sfx_volume    = GameSettings.sfx_volume
 	speed_setting = GameSettings.speed_value
 	
-	# Hitung interval spawn awal dari speed setting
+	# Hubungkan interval spawn awal dari speed setting
 	# speed 0 → 3.0s, speed 100 → 0.3s (linear)
 	spawn_interval = lerp(3.0, 0.3, speed_setting / 100.0)
+	
+	# Buat container untuk pohon dan atur agar bisa di-pause secara terpisah
+	tree_container = Node2D.new()
+	tree_container.name = "TreeContainer"
+	tree_container.process_mode = Node.PROCESS_MODE_PAUSABLE
+	add_child(tree_container)
 	
 	# Setup audio
 	_setup_audio()
@@ -85,10 +93,6 @@ func _ready() -> void:
 	go1_menu_btn.pressed.connect(_on_main_menu_pressed)
 	go2_menu_btn.pressed.connect(_on_main_menu_pressed)
 	
-	# Spawn cursor (pastikan cursor axe selalu di atas semua)
-	var cursor = CURSOR_SCENE.instantiate()
-	add_child(cursor)
-	
 	game_active = true
 
 func _setup_audio() -> void:
@@ -100,7 +104,7 @@ func _setup_audio() -> void:
 	add_child(bgm_player)
 	bgm_player.finished.connect(func(): bgm_player.play())
 	
-	# SFX (single player, bisa diganti AudioStreamPlayer jika ingin polyphonic)
+	# SFX
 	sfx_player = AudioStreamPlayer.new()
 	sfx_player.stream = SFX_HIT
 	sfx_player.volume_db = linear_to_db(sfx_volume / 100.0)
@@ -154,12 +158,12 @@ func _spawn_object() -> void:
 	# Sambungkan sinyal klik
 	obj.clicked.connect(_on_object_clicked.bind(is_sawit))
 	
-	add_child(obj)
+	tree_container.add_child(obj)
 
 # ─── Event handlers ───────────────────────────────────────────────────────────
 
 func _on_object_clicked(_node: Node2D, is_sawit: bool) -> void:
-	if not game_active:
+	if not game_active or paused:
 		return
 	
 	# SFX tebang
@@ -188,7 +192,6 @@ func _on_resume_pressed() -> void:
 func _on_main_menu_pressed() -> void:
 	# Pastikan game tidak pause saat kembali ke menu
 	get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_node("/root/Main").change_scene(load("res://Scenes/main_menu.tscn"))
 
 func _end_game() -> void:
@@ -196,6 +199,10 @@ func _end_game() -> void:
 	
 	# Hentikan BGM
 	bgm_player.stop()
+	
+	# Bersihkan pohon yang tersisa
+	for child in tree_container.get_children():
+		child.queue_free()
 	
 	# Tampilkan menu yang sesuai dan putar audio
 	if score >= 0:
@@ -207,6 +214,3 @@ func _end_game() -> void:
 	
 	end_player.volume_db = linear_to_db(music_volume / 100.0)
 	end_player.play()
-	
-	# Kembalikan kursor sistem
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
