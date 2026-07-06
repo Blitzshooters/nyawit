@@ -34,13 +34,16 @@ var paused: bool = false
 # Container untuk menampung pohon yang sedang aktif (agar bisa di-pause secara independen)
 var tree_container: Node2D
 
+# Bag untuk mengacak spawn sawit dan tree agar seimbang dan acak (mencegah tumpukan sejenis berturut-turut)
+var spawn_bag: Array[bool] = []
+
 # Spawn interval: diambil dari speed setting (0-100) lalu dimap ke detik
-var spawn_interval: float = 1.5
+var spawn_interval: float = 0.75
 var spawn_timer: float = 0.0
 
-# Percepatan spawn: setiap detik interval dikurangi sedikit, minimal 0.2 detik
-const MIN_SPAWN_INTERVAL := 0.2
-const ACCELERATION := 0.02   # dikurangi per detik
+# Percepatan spawn: setiap detik interval dikurangi sedikit, minimal 0.1 detik
+const MIN_SPAWN_INTERVAL := 0.1
+const ACCELERATION := 0.01   # dikurangi per detik
 
 # ── Audio players ─────────────────────────────────────────────────────────────
 var bgm_player: AudioStreamPlayer
@@ -64,14 +67,15 @@ func _ready() -> void:
 	# Pastikan script ini tetap aktif saat pause untuk memproses input tombol Esc
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	# Muat pengaturan volume dan kecepatan dari GameSettings autoload
+	# Muat pengaturan volume, kecepatan, dan batas waktu dari GameSettings autoload
 	music_volume  = GameSettings.music_volume
 	sfx_volume    = GameSettings.sfx_volume
 	speed_setting = GameSettings.speed_value
+	time_left     = GameSettings.timer_value
 	
-	# Hubungkan interval spawn awal dari speed setting
-	# speed 0 → 3.0s, speed 100 → 0.3s (linear)
-	spawn_interval = lerp(3.0, 0.3, speed_setting / 100.0)
+	# Hubungkan interval spawn awal dari speed setting (2 kali lipat lebih cepat dari sebelumnya)
+	# speed 0 → 1.5s, speed 100 → 0.15s (linear)
+	spawn_interval = lerp(1.5, 0.15, speed_setting / 100.0)
 	
 	# Buat container untuk pohon dan atur agar bisa di-pause secara terpisah
 	tree_container = Node2D.new()
@@ -146,14 +150,46 @@ func _input(event: InputEvent) -> void:
 # ─── Spawn ────────────────────────────────────────────────────────────────────
 
 func _spawn_object() -> void:
-	var is_sawit := randf() < 0.5
+	# Isi kembali bag jika kosong untuk memastikan spawn sawit & tree seimbang dan teracak secara merata
+	if spawn_bag.is_empty():
+		for i in range(4):
+			spawn_bag.append(true)  # sawit
+			spawn_bag.append(false) # tree
+		spawn_bag.shuffle()
+	
+	var is_sawit: bool = spawn_bag.pop_back()
+	
+	var pos := Vector2.ZERO
+	var pos_found := false
+	var min_distance := 130.0 # Jarak minimal antar objek agar tidak bertumpuk
+	
+	for attempt in range(50):
+		var rx := randf_range(MARGIN, VIEWPORT_W - MARGIN)
+		var ry := randf_range(MARGIN_TOP + MARGIN, VIEWPORT_H - MARGIN)
+		var candidate := Vector2(rx, ry)
+		
+		var overlaps := false
+		for child in tree_container.get_children():
+			# Lewati jika objek sudah tidak aktif / sedang ditebang
+			if child.get("_alive") == false:
+				continue
+				
+			if candidate.distance_to(child.position) < min_distance:
+				overlaps = true
+				break
+		
+		if not overlaps:
+			pos = candidate
+			pos_found = true
+			break
+	
+	# Jika tidak menemukan posisi yang tidak bertumpuk setelah 50 kali percobaan, lewati spawn kali ini
+	if not pos_found:
+		return
+		
 	var scene = SAWIT_SCENE if is_sawit else TREE_SCENE
 	var obj = scene.instantiate()
-	
-	# Posisi acak di dalam viewport (hindari area HUD)
-	var rx := randf_range(MARGIN, VIEWPORT_W - MARGIN)
-	var ry := randf_range(MARGIN_TOP + MARGIN, VIEWPORT_H - MARGIN)
-	obj.position = Vector2(rx, ry)
+	obj.position = pos
 	
 	# Sambungkan sinyal klik
 	obj.clicked.connect(_on_object_clicked.bind(is_sawit))

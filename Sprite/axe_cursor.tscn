@@ -31,7 +31,7 @@ animations = [{
 }]
 
 [node name="AxeCursor" type="AnimatedSprite2D" unique_id=1327941027]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_arc1f")
 animation = &"Idle"
 script = ExtResource("2_ah54n")

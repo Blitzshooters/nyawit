@@ -44,10 +44,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -338.0
+offset_left = -521.0
 offset_top = -331.5
-offset_right = 330.0
-offset_bottom = 79.5
+offset_right = 519.0
+offset_bottom = 147.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v4drr")
@@ -75,9 +75,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -309.0
-offset_top = -109.0
+offset_top = -113.0
 offset_right = -9.0
-offset_bottom = -9.0
+offset_bottom = -13.0
 grow_horizontal = 0
 grow_vertical = 0
 texture_normal = SubResource("AtlasTexture_v4k34")
@@ -91,10 +91,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = -107.0
-offset_right = 204.0
-offset_bottom = -7.0
+offset_left = 6.0
+offset_top = -113.0
+offset_right = 206.0
+offset_bottom = -13.0
 grow_vertical = 0
 texture_normal = SubResource("AtlasTexture_dx3ip")
 texture_pressed = SubResource("AtlasTexture_jksj1")
@@ -108,10 +108,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -316.0
-offset_top = -126.0
-offset_right = 316.0
-offset_bottom = 30.0
+offset_left = -493.5
+offset_top = -120.0
+offset_right = 493.5
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -121,25 +121,25 @@ layout_mode = 2
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=116742517]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_v4drr")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 50
 text = "Nama"
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=132891609]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_v4drr")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 50
 text = "Yogi Ario Pratama"
 
 [node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1333502791]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_v4drr")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 50
 text = "Muhammad Zam Zam Mubarok"
 
 [node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=144595116]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_v4drr")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 50
 text = "Refhanda Setyadi Eko Wicaksono  "
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1706914853]
@@ -148,23 +148,23 @@ layout_mode = 2
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=1436603506]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_v4drr")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 50
 text = "NPM"
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=378686691]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_v4drr")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 50
 text = "2313020004"
 
 [node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=192896930]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_v4drr")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 50
 text = "2313020052"
 
 [node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=556268950]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_v4drr")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 50
 text = "2313020058"
