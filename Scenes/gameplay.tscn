@@ -234,7 +234,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_wbxth")
 theme_override_font_sizes/font_size = 100
-text = "Hey, antek antek-asing!"
+text = "Hey, antek-antek asing!"
 
 [node name="MainMenuTextureButton" type="TextureButton" parent="CanvasLayer/GameOverMenu2" unique_id=19145204]
 custom_minimum_size = Vector2(300, 100)

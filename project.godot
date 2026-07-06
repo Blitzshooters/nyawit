@@ -15,6 +15,10 @@ run/main_scene="uid://twfgpgfwe5xo"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameSettings="*res://Scripts/game_settings.gd"
+
 [display]
 
 window/size/viewport_width=1280
@@ -28,8 +32,3 @@ window/size/viewport_height=720
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
-
-[autoload]
-
-GameSettings="*res://Scripts/game_settings.gd"
-
