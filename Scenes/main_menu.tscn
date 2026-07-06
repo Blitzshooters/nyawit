@@ -145,7 +145,7 @@ scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_vr1f0")
 
 [node name="TreeAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1335287448]
-position = Vector2(852, 145)
+position = Vector2(852, 157)
 scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_t1dhk")
 
