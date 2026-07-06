@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://btjo7qss46f78"]
+
+[ext_resource type="Script" uid="uid://buoeycebouu52" path="res://Scripts/gameplay.gd" id="1_wbxth"]
+
+[node name="Gameplay" type="Node2D" unique_id=1522893207]
+script = ExtResource("1_wbxth")
+
+[node name="Label" type="Label" parent="." unique_id=35576851]
+offset_right = 40.0
+offset_bottom = 23.0

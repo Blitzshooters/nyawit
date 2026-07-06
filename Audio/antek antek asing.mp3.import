@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b13vkuueq5y7w"
+path="res://.godot/imported/antek antek asing.mp3-6a75467fc3213595e3fa83516a1e089a.mp3str"
+
+[deps]
+
+source_file="res://Audio/antek antek asing.mp3"
+dest_files=["res://.godot/imported/antek antek asing.mp3-6a75467fc3213595e3fa83516a1e089a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

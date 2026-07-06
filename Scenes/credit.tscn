@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://b6xmi1epc6nbj"]
+
+[ext_resource type="Script" uid="uid://d14as0n0ef4qb" path="res://Scripts/credit.gd" id="1_8u2iu"]
+[ext_resource type="Texture2D" uid="uid://btj3lojisical" path="res://Png/Ui2.png" id="2_nto78"]
+[ext_resource type="Texture2D" uid="uid://dh6vs5h8iynjb" path="res://Png/Ui2onclick.png" id="3_v4drr"]
+[ext_resource type="Texture2D" uid="uid://c5tbnhpdjjpk" path="res://Png/Ui1.png" id="4_qb0r7"]
+[ext_resource type="Texture2D" uid="uid://f4fqstyg2msa" path="res://Png/Ui1onclick.png" id="5_d2lxo"]
+[ext_resource type="FontFile" uid="uid://dsyubgcuupvn2" path="res://Font/Tiny5-Regular.ttf" id="6_v4drr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v4drr"]
+bg_color = Color(0.003921569, 0.003921569, 0.003921569, 0.39215687)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4k34"]
+atlas = ExtResource("2_nto78")
+region = Rect2(9, 86, 43, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_721br"]
+atlas = ExtResource("3_v4drr")
+region = Rect2(9, 86, 43, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx3ip"]
+atlas = ExtResource("4_qb0r7")
+region = Rect2(4, 8, 25, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jksj1"]
+atlas = ExtResource("5_d2lxo")
+region = Rect2(4, 8, 25, 13)
+
+[node name="Credit" type="Control" unique_id=1328433425]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1278.0
+offset_bottom = 723.0
+script = ExtResource("1_8u2iu")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=106673492]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -338.0
+offset_top = -331.5
+offset_right = 330.0
+offset_bottom = 79.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v4drr")
+
+[node name="Credit" type="Label" parent="." unique_id=1043937512]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -223.0
+offset_top = 28.0
+offset_right = 223.0
+offset_bottom = 220.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_v4drr")
+theme_override_font_sizes/font_size = 170
+text = "Credit"
+
+[node name="MainMenuTextureButton" type="TextureButton" parent="." unique_id=1815171486]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -309.0
+offset_top = -109.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_v4k34")
+texture_pressed = SubResource("AtlasTexture_721br")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PlayTextureButton" type="TextureButton" parent="." unique_id=16727272]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -107.0
+offset_right = 204.0
+offset_bottom = -7.0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_dx3ip")
+texture_pressed = SubResource("AtlasTexture_jksj1")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=107313318]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.0
+offset_top = -126.0
+offset_right = 316.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1661733570]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=116742517]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v4drr")
+theme_override_font_sizes/font_size = 32
+text = "Nama"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=132891609]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v4drr")
+theme_override_font_sizes/font_size = 32
+text = "Yogi Ario Pratama"
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1333502791]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v4drr")
+theme_override_font_sizes/font_size = 32
+text = "Muhammad Zam Zam Mubarok"
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=144595116]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v4drr")
+theme_override_font_sizes/font_size = 32
+text = "Refhanda Setyadi Eko Wicaksono  "
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1706914853]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=1436603506]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v4drr")
+theme_override_font_sizes/font_size = 32
+text = "NPM"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=378686691]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v4drr")
+theme_override_font_sizes/font_size = 32
+text = "2313020004"
+
+[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=192896930]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v4drr")
+theme_override_font_sizes/font_size = 32
+text = "2313020052"
+
+[node name="Label4" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=556268950]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v4drr")
+theme_override_font_sizes/font_size = 32
+text = "2313020058"

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c337y2fky8nef"]
+
+[ext_resource type="Texture2D" uid="uid://btg2bs3pp3tly" path="res://Png/Axe.png" id="1_xh52u"]
+[ext_resource type="Script" uid="uid://retv1j1p7okm" path="res://Scripts/axe_cursor.gd" id="2_ah54n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mc3x"]
+atlas = ExtResource("1_xh52u")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbmdj"]
+atlas = ExtResource("1_xh52u")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_arc1f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mc3x")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbmdj")
+}],
+"loop": true,
+"name": &"OnClick",
+"speed": 5.0
+}]
+
+[node name="AxeCursor" type="AnimatedSprite2D" unique_id=1327941027]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_arc1f")
+animation = &"Idle"
+script = ExtResource("2_ah54n")

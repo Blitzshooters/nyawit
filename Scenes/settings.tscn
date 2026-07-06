@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://ckf6btwu3u73"]
+
+[ext_resource type="Script" uid="uid://kwxsuhso7nqm" path="res://Scripts/settings.gd" id="1_4geyq"]
+[ext_resource type="FontFile" uid="uid://dsyubgcuupvn2" path="res://Font/Tiny5-Regular.ttf" id="2_i44u3"]
+[ext_resource type="Texture2D" uid="uid://btj3lojisical" path="res://Png/Ui2.png" id="3_lhmql"]
+[ext_resource type="Texture2D" uid="uid://dh6vs5h8iynjb" path="res://Png/Ui2onclick.png" id="4_aaqfp"]
+[ext_resource type="Texture2D" uid="uid://c5tbnhpdjjpk" path="res://Png/Ui1.png" id="5_6kysc"]
+[ext_resource type="Texture2D" uid="uid://f4fqstyg2msa" path="res://Png/Ui1onclick.png" id="6_6vr2p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6kysc"]
+bg_color = Color(0.003921569, 0.003921569, 0.003921569, 0.39215687)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kysc"]
+atlas = ExtResource("3_lhmql")
+region = Rect2(9, 86, 43, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2dne"]
+atlas = ExtResource("4_aaqfp")
+region = Rect2(9, 86, 43, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f60ng"]
+atlas = ExtResource("5_6kysc")
+region = Rect2(4, 8, 25, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bismi"]
+atlas = ExtResource("6_6vr2p")
+region = Rect2(4, 8, 25, 13)
+
+[node name="Settings" type="Control" unique_id=1301962416]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1282.0
+offset_bottom = 719.0
+script = ExtResource("1_4geyq")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=180678673]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -331.5
+offset_right = 324.0
+offset_bottom = 142.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6kysc")
+
+[node name="Settings" type="Label" parent="." unique_id=874770105]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -304.5
+offset_top = 28.0
+offset_right = 311.5
+offset_bottom = 220.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_i44u3")
+theme_override_font_sizes/font_size = 170
+text = "Settings"
+
+[node name="MainMenuTextureButton" type="TextureButton" parent="." unique_id=1098118416]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -309.0
+offset_top = -109.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_6kysc")
+texture_pressed = SubResource("AtlasTexture_j2dne")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PlayTextureButton" type="TextureButton" parent="." unique_id=1501755332]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -109.0
+offset_right = 206.0
+offset_bottom = -9.0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_f60ng")
+texture_pressed = SubResource("AtlasTexture_bismi")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1544847821]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = -115.5
+offset_right = 292.0
+offset_bottom = 118.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=416000990]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer" unique_id=485373823]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1555448722]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i44u3")
+theme_override_font_sizes/font_size = 64
+text = "Music"
+
+[node name="SFXLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1599673741]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i44u3")
+theme_override_font_sizes/font_size = 64
+text = "SFX"
+
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1439417992]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i44u3")
+theme_override_font_sizes/font_size = 64
+text = "Speed"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=791121320]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/MarginContainer2" unique_id=1986732227]
+layout_mode = 2
+
+[node name="MusicHSlider" type="HSlider" parent="HBoxContainer/MarginContainer2/VBoxContainer2" unique_id=318561976]
+custom_minimum_size = Vector2(200, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 50.0
+
+[node name="SFXHSlider" type="HSlider" parent="HBoxContainer/MarginContainer2/VBoxContainer2" unique_id=1222480783]
+custom_minimum_size = Vector2(200, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 50.0
+
+[node name="SpeedHSlider" type="HSlider" parent="HBoxContainer/MarginContainer2/VBoxContainer2" unique_id=1380359873]
+custom_minimum_size = Vector2(200, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 50.0
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer" unique_id=1859956851]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/MarginContainer3" unique_id=352608114]
+layout_mode = 2
+
+[node name="MusicValue" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer3" unique_id=1910508625]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i44u3")
+theme_override_font_sizes/font_size = 64
+text = "50"
+
+[node name="SFXValue" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer3" unique_id=932571039]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i44u3")
+theme_override_font_sizes/font_size = 64
+text = "50"
+
+[node name="SpeedValue" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer3" unique_id=920663467]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i44u3")
+theme_override_font_sizes/font_size = 64
+text = "50"
