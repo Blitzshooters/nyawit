@@ -2,20 +2,55 @@
 
 [ext_resource type="Script" uid="uid://buoeycebouu52" path="res://Scripts/gameplay.gd" id="1_wbxth"]
 [ext_resource type="FontFile" uid="uid://dsyubgcuupvn2" path="res://Font/Tiny5-Regular.ttf" id="2_wbxth"]
+[ext_resource type="Texture2D" uid="uid://btj3lojisical" path="res://Png/Ui2.png" id="3_rlidi"]
+[ext_resource type="Texture2D" uid="uid://dh6vs5h8iynjb" path="res://Png/Ui2onclick.png" id="4_1qnfl"]
+[ext_resource type="Texture2D" uid="uid://c5tbnhpdjjpk" path="res://Png/Ui1.png" id="5_urrcd"]
+[ext_resource type="Texture2D" uid="uid://f4fqstyg2msa" path="res://Png/Ui1onclick.png" id="6_puebw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlidi"]
+bg_color = Color(0.003921569, 0.003921569, 0.003921569, 0.39215687)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlidi"]
+atlas = ExtResource("5_urrcd")
+region = Rect2(4, 8, 25, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qnfl"]
+atlas = ExtResource("6_puebw")
+region = Rect2(4, 8, 25, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urrcd"]
+atlas = ExtResource("3_rlidi")
+region = Rect2(9, 86, 43, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puebw"]
+atlas = ExtResource("4_1qnfl")
+region = Rect2(9, 86, 43, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h7oy"]
+atlas = ExtResource("3_rlidi")
+region = Rect2(9, 86, 43, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltefv"]
+atlas = ExtResource("4_1qnfl")
+region = Rect2(9, 86, 43, 14)
 
 [node name="Gameplay" type="Node2D" unique_id=1522893207]
 script = ExtResource("1_wbxth")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1391303074]
 
-[node name="PointLabel" type="Label" parent="CanvasLayer" unique_id=1151410765]
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1151410765]
 offset_left = 17.0
 offset_top = 6.0
 offset_right = 225.0
 offset_bottom = 78.0
 theme_override_fonts/font = ExtResource("2_wbxth")
 theme_override_font_sizes/font_size = 64
-text = "Point: 0"
+text = "Score: 0"
 
 [node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=5742155]
 anchors_preset = 1
@@ -29,3 +64,193 @@ grow_horizontal = 0
 theme_override_fonts/font = ExtResource("2_wbxth")
 theme_override_font_sizes/font_size = 64
 text = "Timer: 0"
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer" unique_id=945697896]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/PauseMenu" unique_id=2045116718]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.0
+offset_top = -103.5
+offset_right = 327.0
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rlidi")
+
+[node name="PauseLabel" type="Label" parent="CanvasLayer/PauseMenu" unique_id=513607110]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -56.5
+offset_right = 288.0
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wbxth")
+theme_override_font_sizes/font_size = 100
+text = "Game Paused"
+
+[node name="PlayTextureButton" type="TextureButton" parent="CanvasLayer/PauseMenu" unique_id=150513338]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -109.0
+offset_right = 206.0
+offset_bottom = -9.0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_rlidi")
+texture_pressed = SubResource("AtlasTexture_1qnfl")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MainMenuTextureButton" type="TextureButton" parent="CanvasLayer/PauseMenu" unique_id=361051262]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -309.0
+offset_top = -109.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_urrcd")
+texture_pressed = SubResource("AtlasTexture_puebw")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="GameOverMenu1" type="Control" parent="CanvasLayer" unique_id=36495040]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1281.0
+offset_bottom = 720.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/GameOverMenu1" unique_id=602000327]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.0
+offset_top = -103.5
+offset_right = 327.0
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rlidi")
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/GameOverMenu1" unique_id=2124867282]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = -56.5
+offset_right = 312.5
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wbxth")
+theme_override_font_sizes/font_size = 100
+text = "Hidup J*****i!"
+
+[node name="MainMenuTextureButton" type="TextureButton" parent="CanvasLayer/GameOverMenu1" unique_id=1727819897]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -309.0
+offset_top = -109.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_5h7oy")
+texture_pressed = SubResource("AtlasTexture_ltefv")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="GameOverMenu2" type="Control" parent="CanvasLayer" unique_id=1242346180]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1281.0
+offset_bottom = 720.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/GameOverMenu2" unique_id=2093764091]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -538.5
+offset_top = -103.5
+offset_right = 538.5
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rlidi")
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/GameOverMenu2" unique_id=1961170720]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -508.0
+offset_top = -56.5
+offset_right = 518.0
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wbxth")
+theme_override_font_sizes/font_size = 100
+text = "Hey, antek antek-asing!"
+
+[node name="MainMenuTextureButton" type="TextureButton" parent="CanvasLayer/GameOverMenu2" unique_id=19145204]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -309.0
+offset_top = -109.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_5h7oy")
+texture_pressed = SubResource("AtlasTexture_ltefv")
+ignore_texture_size = true
+stretch_mode = 5

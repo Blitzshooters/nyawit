@@ -23,4 +23,3 @@ func change_scene(scene: PackedScene):
 	print("[Main] Instantiated new scene: ", current_scene.name, " (", current_scene, ")")
 	container.add_child(current_scene)
 	print("[Main] Current children in PageContainer: ", container.get_children())
-

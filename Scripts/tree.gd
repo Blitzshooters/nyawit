@@ -1,11 +1,36 @@
 extends Area2D
 
+signal clicked(node)
 
-# Called when the node enters the scene tree for the first time.
+var _alive := true
+var _lifetime_timer := 0.0
+const LIFETIME := 2.0
+
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 func _ready() -> void:
-	pass # Replace with function body.
+	sprite.play("default")
+	input_pickable = true
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if not _alive:
+		return
+	_lifetime_timer += delta
+	if _lifetime_timer >= LIFETIME:
+		_die_expired()
+
+func _input_event(_viewport, event: InputEvent, _shape_idx: int) -> void:
+	if not _alive:
+		return
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		_alive = false
+		emit_signal("clicked", self)
+		sprite.play("cutdown")
+		sprite.animation_finished.connect(_on_cutdown_done)
+
+func _die_expired() -> void:
+	_alive = false
+	queue_free()
+
+func _on_cutdown_done() -> void:
+	queue_free()
