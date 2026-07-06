@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://ckf6btwu3u73"]
 
 [ext_resource type="Script" uid="uid://kwxsuhso7nqm" path="res://Scripts/settings.gd" id="1_4geyq"]
+[ext_resource type="Texture2D" uid="uid://bm3bmya8eooog" path="res://Png/Judul3.png" id="2_f60ng"]
 [ext_resource type="FontFile" uid="uid://dsyubgcuupvn2" path="res://Font/Tiny5-Regular.ttf" id="2_i44u3"]
+[ext_resource type="Texture2D" uid="uid://r410vlmcdep4" path="res://Png/Sawit.png" id="2_rgw85"]
+[ext_resource type="Texture2D" uid="uid://cjeaq44rfmbkk" path="res://Png/Judul2.png" id="3_bismi"]
+[ext_resource type="Texture2D" uid="uid://cdcwib7ox4u1p" path="res://Png/Tree.png" id="3_l7vst"]
 [ext_resource type="Texture2D" uid="uid://btj3lojisical" path="res://Png/Ui2.png" id="3_lhmql"]
 [ext_resource type="Texture2D" uid="uid://dh6vs5h8iynjb" path="res://Png/Ui2onclick.png" id="4_aaqfp"]
 [ext_resource type="Texture2D" uid="uid://c5tbnhpdjjpk" path="res://Png/Ui1.png" id="5_6kysc"]
@@ -13,6 +17,82 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j51l7"]
+atlas = ExtResource("2_rgw85")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lu4n"]
+atlas = ExtResource("2_rgw85")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnuuc"]
+atlas = ExtResource("2_rgw85")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_35cvv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j51l7")
+}],
+"loop": true,
+"name": &"cutdown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lu4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnuuc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnvrw"]
+atlas = ExtResource("3_l7vst")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvmkm"]
+atlas = ExtResource("3_l7vst")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2g23"]
+atlas = ExtResource("3_l7vst")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ieo4m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnvrw")
+}],
+"loop": true,
+"name": &"cutdown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvmkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2g23")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgw85"]
+atlas = ExtResource("2_f60ng")
+region = Rect2(22, 110, 211, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7vst"]
+atlas = ExtResource("3_bismi")
+region = Rect2(22, 110, 211, 68)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6kysc"]
 atlas = ExtResource("3_lhmql")
@@ -52,19 +132,29 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6kysc")
 
-[node name="Settings" type="Label" parent="." unique_id=874770105]
+[node name="SawitAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=520582186]
+position = Vector2(424, 134.00002)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_35cvv")
+
+[node name="TreeAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1824281661]
+position = Vector2(852, 145)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_ieo4m")
+
+[node name="Settings" type="TextureButton" parent="." unique_id=1946789787]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -298.5
-offset_top = 28.0
-offset_right = 317.5
-offset_bottom = 220.0
+offset_left = -198.9
+offset_top = 64.0
+offset_right = 198.90002
+offset_bottom = 217.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_i44u3")
-theme_override_font_sizes/font_size = 170
-text = "Settings"
+texture_normal = SubResource("AtlasTexture_rgw85")
+texture_hover = SubResource("AtlasTexture_l7vst")
+stretch_mode = 5
 
 [node name="MainMenuTextureButton" type="TextureButton" parent="." unique_id=1098118416]
 custom_minimum_size = Vector2(300, 100)

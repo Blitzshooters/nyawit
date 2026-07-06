@@ -1,6 +1,11 @@
 extends Control
 
+@onready var sawit_sprite: AnimatedSprite2D = $SawitAnimatedSprite2D
+@onready var tree_sprite: AnimatedSprite2D  = $TreeAnimatedSprite2D
+
 func _ready() -> void:
+	sawit_sprite.play("default")
+	tree_sprite.play("default")
 	$VBoxContainer/SettingsTextureButton.pressed.connect(_on_settings_pressed)
 	$VBoxContainer/CreditTextureButton.pressed.connect(_on_credits_pressed)
 	$VBoxContainer/ExitTextureButton.pressed.connect(_on_quit_pressed)

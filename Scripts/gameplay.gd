@@ -61,7 +61,7 @@ var speed_setting: float = 50.0   # 0-100
 const VIEWPORT_W := 1280.0
 const VIEWPORT_H := 720.0
 const MARGIN_TOP := 100.0   # hindari area HUD atas
-const MARGIN     := 60.0
+const MARGIN     := 65.0    # +5px untuk cegah sprite keluar layar (kiri/kanan/bawah)
 
 # ─────────────────────────────────────────────────────────────────────────────
 

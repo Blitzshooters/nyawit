@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://xsocfyqbpp13" path="res://Scripts/main_menu.gd" id="1_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://on02opanitu" path="res://Png/Judul1.png" id="2_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://dpgvh5sagkw2a" path="res://Png/Judul.png" id="2_opfnp"]
+[ext_resource type="Texture2D" uid="uid://r410vlmcdep4" path="res://Png/Sawit.png" id="2_trj04"]
+[ext_resource type="Texture2D" uid="uid://cdcwib7ox4u1p" path="res://Png/Tree.png" id="3_16hvj"]
 [ext_resource type="Texture2D" uid="uid://c5tbnhpdjjpk" path="res://Png/Ui1.png" id="4_16hvj"]
 [ext_resource type="Texture2D" uid="uid://f4fqstyg2msa" path="res://Png/Ui1onclick.png" id="5_vr1f0"]
 [ext_resource type="Texture2D" uid="uid://btj3lojisical" path="res://Png/Ui2.png" id="6_t1dhk"]
@@ -14,6 +16,74 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j51l7"]
+atlas = ExtResource("2_trj04")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lu4n"]
+atlas = ExtResource("2_trj04")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnuuc"]
+atlas = ExtResource("2_trj04")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vr1f0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j51l7")
+}],
+"loop": true,
+"name": &"cutdown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lu4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnuuc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnvrw"]
+atlas = ExtResource("3_16hvj")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvmkm"]
+atlas = ExtResource("3_16hvj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2g23"]
+atlas = ExtResource("3_16hvj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1dhk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnvrw")
+}],
+"loop": true,
+"name": &"cutdown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvmkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2g23")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jix8l"]
 atlas = ExtResource("4_16hvj")
@@ -69,7 +139,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_opfnp")
 
-[node name="TextureButton" type="TextureButton" parent="." unique_id=1049730708]
+[node name="SawitAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=518984168]
+position = Vector2(424, 134.00002)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_vr1f0")
+
+[node name="TreeAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1335287448]
+position = Vector2(852, 145)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_t1dhk")
+
+[node name="Nyawit" type="TextureButton" parent="." unique_id=1049730708]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
