@@ -4,6 +4,7 @@ extends Control
 @onready var sfx_slider:   HSlider = $HBoxContainer/MarginContainer2/VBoxContainer2/SFXHSlider
 @onready var speed_slider:  HSlider = $HBoxContainer/MarginContainer2/VBoxContainer2/SpeedHSlider
 @onready var timer_slider:  HSlider = $HBoxContainer/MarginContainer2/VBoxContainer2/TimerHSlider
+@onready var fullscreen_checkbox: CheckBox = $HBoxContainer/MarginContainer2/VBoxContainer2/FullscreenCheckBox
 
 @onready var music_value: Label = $HBoxContainer/MarginContainer3/VBoxContainer3/MusicValue
 @onready var sfx_value:   Label = $HBoxContainer/MarginContainer3/VBoxContainer3/SFXValue
@@ -24,6 +25,7 @@ func _ready() -> void:
 	sfx_slider.value   = GameSettings.sfx_volume
 	speed_slider.value = GameSettings.speed_value
 	timer_slider.value = GameSettings.timer_value
+	fullscreen_checkbox.button_pressed = GameSettings.fullscreen
 	
 	# Setel label awal
 	music_value.text = str(int(music_slider.value))
@@ -36,6 +38,7 @@ func _ready() -> void:
 	sfx_slider.value_changed.connect(_on_sfx_changed)
 	speed_slider.value_changed.connect(_on_speed_changed)
 	timer_slider.value_changed.connect(_on_timer_changed)
+	fullscreen_checkbox.toggled.connect(_on_fullscreen_toggled)
 	
 	# Sambungkan tombol
 	main_menu_btn.pressed.connect(_on_main_menu_pressed)
@@ -65,3 +68,14 @@ func _on_main_menu_pressed() -> void:
 
 func _on_play_pressed() -> void:
 	get_node("/root/Main").change_scene(load("res://Scenes/gameplay.tscn"))
+
+func _on_fullscreen_toggled(is_pressed: bool) -> void:
+	GameSettings.fullscreen = is_pressed
+	if Engine.has_method("is_embedded_in_editor") and Engine.is_embedded_in_editor():
+		print("[Settings] Embedded window mode detected. Fullscreen is only supported in standalone windowed runs.")
+		return
+		
+	if is_pressed:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

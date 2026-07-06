@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dh6vs5h8iynjb" path="res://Png/Ui2onclick.png" id="4_aaqfp"]
 [ext_resource type="Texture2D" uid="uid://c5tbnhpdjjpk" path="res://Png/Ui1.png" id="5_6kysc"]
 [ext_resource type="Texture2D" uid="uid://f4fqstyg2msa" path="res://Png/Ui1onclick.png" id="6_6vr2p"]
+[ext_resource type="Texture2D" uid="uid://bben6po0l641l" path="res://Png/Checkmark.png" id="11_l7vst"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6kysc"]
 bg_color = Color(0.003921569, 0.003921569, 0.003921569, 0.39215687)
@@ -110,6 +111,14 @@ region = Rect2(4, 8, 25, 13)
 atlas = ExtResource("6_6vr2p")
 region = Rect2(4, 8, 25, 13)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_35cvv"]
+atlas = ExtResource("11_l7vst")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieo4m"]
+atlas = ExtResource("11_l7vst")
+region = Rect2(64, 0, 64, 64)
+
 [node name="Settings" type="Control" unique_id=1301962416]
 layout_mode = 3
 anchors_preset = 0
@@ -125,9 +134,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -330.0
-offset_top = -331.5
+offset_top = -340.0
 offset_right = 324.0
-offset_bottom = 222.5
+offset_bottom = 225.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6kysc")
@@ -198,10 +207,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -244.0
-offset_top = -115.5
-offset_right = 292.0
-offset_bottom = 198.5
+offset_left = -270.0
+offset_top = -111.5
+offset_right = 268.0
+offset_bottom = 221.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -218,26 +227,32 @@ layout_mode = 2
 [node name="MusicLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1555448722]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_i44u3")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 50
 text = "Music"
 
 [node name="SFXLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1599673741]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_i44u3")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 50
 text = "SFX"
 
 [node name="SpeedLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1439417992]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_i44u3")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 50
 text = "Speed"
 
 [node name="TimerLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=1352291269]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_i44u3")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 50
 text = "Timer"
+
+[node name="FullscreenLabel" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer" unique_id=446048767]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i44u3")
+theme_override_font_sizes/font_size = 50
+text = "Fullscreen"
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer" unique_id=791121320]
 layout_mode = 2
@@ -250,28 +265,28 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="MusicHSlider" type="HSlider" parent="HBoxContainer/MarginContainer2/VBoxContainer2" unique_id=318561976]
-custom_minimum_size = Vector2(200, 72)
+custom_minimum_size = Vector2(200, 56)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 value = 50.0
 
 [node name="SFXHSlider" type="HSlider" parent="HBoxContainer/MarginContainer2/VBoxContainer2" unique_id=1222480783]
-custom_minimum_size = Vector2(200, 72)
+custom_minimum_size = Vector2(200, 56)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 value = 50.0
 
 [node name="SpeedHSlider" type="HSlider" parent="HBoxContainer/MarginContainer2/VBoxContainer2" unique_id=1380359873]
-custom_minimum_size = Vector2(200, 72)
+custom_minimum_size = Vector2(200, 56)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 value = 50.0
 
 [node name="TimerHSlider" type="HSlider" parent="HBoxContainer/MarginContainer2/VBoxContainer2" unique_id=1549351861]
-custom_minimum_size = Vector2(200, 72)
+custom_minimum_size = Vector2(200, 56)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -279,6 +294,19 @@ min_value = 10.0
 max_value = 180.0
 step = 5.0
 value = 60.0
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="HBoxContainer/MarginContainer2/VBoxContainer2" unique_id=1154950933]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_icons/checked = SubResource("AtlasTexture_35cvv")
+theme_override_icons/unchecked = SubResource("AtlasTexture_ieo4m")
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer/MarginContainer2/VBoxContainer2" unique_id=1437965439]
+layout_mode = 2
 
 [node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer" unique_id=1859956851]
 layout_mode = 2
@@ -293,23 +321,28 @@ layout_mode = 2
 [node name="MusicValue" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer3" unique_id=1910508625]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_i44u3")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 50
 text = "50"
 
 [node name="SFXValue" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer3" unique_id=932571039]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_i44u3")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 50
 text = "50"
 
 [node name="SpeedValue" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer3" unique_id=920663467]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_i44u3")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 50
 text = "50"
 
 [node name="TimerValue" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer3" unique_id=1304619765]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_i44u3")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 50
 text = "60s"
+
+[node name="FullscreenValue" type="Label" parent="HBoxContainer/MarginContainer3/VBoxContainer3" unique_id=932316277]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i44u3")
+theme_override_font_sizes/font_size = 64

@@ -8,3 +8,5 @@ var music_volume: float = 50.0
 var sfx_volume: float   = 50.0
 var speed_value: float  = 50.0
 var timer_value: float  = 60.0
+var fullscreen: bool    = false
+
