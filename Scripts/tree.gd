@@ -26,12 +26,9 @@ func _input_event(_viewport, event: InputEvent, _shape_idx: int) -> void:
 		_alive = false
 		emit_signal("clicked", self)
 		sprite.play("cutdown")
-		sprite.animation_finished.connect(_on_cutdown_done)
+		await get_tree().create_timer(1.0).timeout
+		queue_free()
 
 func _die_expired() -> void:
 	_alive = false
-	queue_free()
-
-func _on_cutdown_done() -> void:
-	await get_tree().create_timer(1.0).timeout
 	queue_free()
