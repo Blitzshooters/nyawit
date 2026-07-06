@@ -4,7 +4,7 @@ signal clicked(node)
 
 var _alive := true
 var _lifetime_timer := 0.0
-const LIFETIME := 3.0
+const LIFETIME := 2.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 

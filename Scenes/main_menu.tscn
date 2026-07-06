@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://o02m5udhb408"]
 
 [ext_resource type="Script" uid="uid://xsocfyqbpp13" path="res://Scripts/main_menu.gd" id="1_cp0ys"]
-[ext_resource type="FontFile" uid="uid://dsyubgcuupvn2" path="res://Font/Tiny5-Regular.ttf" id="3_trj04"]
+[ext_resource type="Texture2D" uid="uid://on02opanitu" path="res://Png/Judul1.png" id="2_cp0ys"]
+[ext_resource type="Texture2D" uid="uid://dpgvh5sagkw2a" path="res://Png/Judul.png" id="2_opfnp"]
 [ext_resource type="Texture2D" uid="uid://c5tbnhpdjjpk" path="res://Png/Ui1.png" id="4_16hvj"]
 [ext_resource type="Texture2D" uid="uid://f4fqstyg2msa" path="res://Png/Ui1onclick.png" id="5_vr1f0"]
 [ext_resource type="Texture2D" uid="uid://btj3lojisical" path="res://Png/Ui2.png" id="6_t1dhk"]
@@ -68,19 +69,19 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_opfnp")
 
-[node name="Title" type="Label" parent="." unique_id=1484602231]
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1049730708]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -243.5
-offset_top = 28.0
-offset_right = 266.5
-offset_bottom = 220.0
+offset_left = -273.0
+offset_top = 31.0
+offset_right = 273.0
+offset_bottom = 241.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_trj04")
-theme_override_font_sizes/font_size = 170
-text = "Nyawit"
+texture_normal = ExtResource("2_opfnp")
+texture_hover = ExtResource("2_cp0ys")
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1385071672]
 layout_mode = 1

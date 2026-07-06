@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cpawba6ed1sl6"]
+
+[ext_resource type="Script" path="res://Scripts/big_sawit.gd" id="1_vcqs7"]
+[ext_resource type="Texture2D" uid="uid://r410vlmcdep4" path="res://Png/Sawit.png" id="2_qtn5d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j51l7"]
+atlas = ExtResource("2_qtn5d")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lu4n"]
+atlas = ExtResource("2_qtn5d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnuuc"]
+atlas = ExtResource("2_qtn5d")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sfyop"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j51l7")
+}],
+"loop": true,
+"name": &"cutdown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lu4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnuuc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w67tx"]
+radius = 17.029387
+
+[node name="BigSawit" type="Area2D" unique_id=1546864411]
+script = ExtResource("1_vcqs7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=671618939]
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_sfyop")
+animation = &"cutdown"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1178600023]
+position = Vector2(0, -1)
+scale = Vector2(7, 7)
+shape = SubResource("CircleShape2D_w67tx")

@@ -1,8 +1,10 @@
 extends Node2D
 
 # ── Referensi scene spawn ─────────────────────────────────────────────────────
-const TREE_SCENE  := preload("res://Sprite/tree.tscn")
-const SAWIT_SCENE := preload("res://Sprite/sawit.tscn")
+const TREE_SCENE      := preload("res://Sprite/tree.tscn")
+const SAWIT_SCENE     := preload("res://Sprite/sawit.tscn")
+const BIG_TREE_SCENE  := preload("res://Sprite/big_tree.tscn")
+const BIG_SAWIT_SCENE := preload("res://Sprite/big_sawit.tscn")
 
 # ── Referensi audio ───────────────────────────────────────────────────────────
 const SFX_HIT    := preload("res://Audio/hittree.mp3")
@@ -191,29 +193,44 @@ func _spawn_object() -> void:
 	if not pos_found:
 		return
 		
-	var scene = SAWIT_SCENE if is_sawit else TREE_SCENE
+	# Tentukan apakah spawn ini adalah varian "big" (kemungkinan 1/10)
+	var is_big := randf() < 0.1
+	
+	var scene
+	var points: int
+	if is_big:
+		if is_sawit:
+			scene  = BIG_SAWIT_SCENE
+			points = -3
+		else:
+			scene  = BIG_TREE_SCENE
+			points = 3
+	else:
+		if is_sawit:
+			scene  = SAWIT_SCENE
+			points = -1
+		else:
+			scene  = TREE_SCENE
+			points = 1
+	
 	var obj = scene.instantiate()
 	obj.position = pos
 	
-	# Sambungkan sinyal klik
-	obj.clicked.connect(_on_object_clicked.bind(is_sawit))
+	# Sambungkan sinyal klik dengan nilai poin yang sesuai
+	obj.clicked.connect(_on_object_clicked.bind(points))
 	
 	tree_container.add_child(obj)
 
 # ─── Event handlers ───────────────────────────────────────────────────────────
 
-func _on_object_clicked(_node: Node2D, is_sawit: bool) -> void:
+func _on_object_clicked(_node: Node2D, points: int) -> void:
 	if not game_active or paused:
 		return
 	
 	# SFX tebang
 	sfx_player.play()
 	
-	if is_sawit:
-		score -= 1
-	else:
-		score += 1
-	
+	score += points
 	score_label.text = "Score: %d" % score
 
 func _pause() -> void:

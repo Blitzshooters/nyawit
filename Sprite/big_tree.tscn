@@ -1,18 +1,18 @@
-[gd_scene format=3 uid="uid://c35u8e2maum1v"]
+[gd_scene format=3 uid="uid://d04rdy7bjwfm"]
 
-[ext_resource type="Texture2D" uid="uid://cdcwib7ox4u1p" path="res://Png/Tree.png" id="1_brfkd"]
-[ext_resource type="Script" uid="uid://n64f7ltid8ni" path="res://Scripts/tree.gd" id="1_nnvrw"]
+[ext_resource type="Script" path="res://Scripts/big_tree.gd" id="1_dd8hf"]
+[ext_resource type="Texture2D" uid="uid://cdcwib7ox4u1p" path="res://Png/Tree.png" id="2_jl3sn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nnvrw"]
-atlas = ExtResource("1_brfkd")
+atlas = ExtResource("2_jl3sn")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gvmkm"]
-atlas = ExtResource("1_brfkd")
+atlas = ExtResource("2_jl3sn")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2g23"]
-atlas = ExtResource("1_brfkd")
+atlas = ExtResource("2_jl3sn")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_44ud8"]
@@ -40,13 +40,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ind6k"]
 radius = 14.0
 
-[node name="Tree" type="Area2D" unique_id=889596668]
-script = ExtResource("1_nnvrw")
+[node name="BigTree" type="Area2D" unique_id=889596668]
+script = ExtResource("1_dd8hf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1338182429]
-scale = Vector2(5, 5)
+scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_44ud8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1646646775]
-scale = Vector2(5, 5)
+scale = Vector2(7, 7)
 shape = SubResource("CircleShape2D_ind6k")
